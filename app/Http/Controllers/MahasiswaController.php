@@ -17,13 +17,13 @@ class MahasiswaController extends Controller
     }
     public function update()
     {
-        $result = DB::update('update mahasiswas set nama_mahasiswa = "Christopher Given Wijaya", 
-        alamat = "JL. rajawali", updated_at = now() where npm = ?', ['1923240001']);
+        $result = DB::update('update mahasiswas set nama_mahasiswa = "Santo Wijaya", 
+        alamat = "JL. rajawali", updated_at = now() where npm = ?', ['1923240039']);
         dump($result);
     }
     public function delete()
     {
-        $result = DB::delete('delete from mahasiswas where npm = ?', ['1923240001']);
+        $result = DB::delete('delete from mahasiswas where npm = ?', ['1923240039']);
         dump($result);
     }
     public function select()
@@ -37,7 +37,7 @@ class MahasiswaController extends Controller
     {
         $result = DB::table('mahasiswas')->insert(
             [
-                'npm' => '1923240002',
+                'npm' => '1923240040',
                 'nama_mahasiswa' => 'Kusuma Wijaya',
                 'tempat_lahir' => 'Jakarta',
                 'tanggal_lahir' => '2005-01-01',
@@ -50,7 +50,7 @@ class MahasiswaController extends Controller
     public function updateQb()
     {
         $result = DB::table('mahasiswas')
-            ->where('npm', '1923240002')
+            ->where('npm', '1923240040')
             ->update(
                 [
                     'nama_mahasiswa' => 'Mariano ',
@@ -62,7 +62,7 @@ class MahasiswaController extends Controller
     public function deleteQb()
     {
         $result = DB::table('mahasiswas')
-            ->where('npm', '=', '1923240002')
+            ->where('npm', '=', '1923240040')
             ->delete();
         dump($result);
     }
@@ -76,7 +76,7 @@ class MahasiswaController extends Controller
     public function insertElq()
     {
         $mahasiswa = new Mahasiswa; // instansiasi class mahasiswa
-        $mahasiswa->npm = '1923240010'; // isi property
+        $mahasiswa->npm = '1923240050'; // isi property
         $mahasiswa->nama_mahasiswa = 'Frangky Wijaya';
         $mahasiswa->tempat_lahir = 'Bandung';
         $mahasiswa->tanggal_lahir = '2000-11-11';
@@ -86,14 +86,14 @@ class MahasiswaController extends Controller
     }
     public function updateElq()
     {
-        $mahasiswa = Mahasiswa::where('npm', '1923240010')->first(); // cari data berdasarkan npm
-        $mahasiswa->nama_mahasiswa = 'hamand';
+        $mahasiswa = Mahasiswa::where('npm', '1923240050')->first(); // cari data berdasarkan npm
+        $mahasiswa->nama_mahasiswa = 'Frangky Kusuma';
         $mahasiswa->save(); // save data
         dump($mahasiswa); // show data
     }
     public function deleteElq()
     {
-        $mahasiswa = Mahasiswa::where('npm', '1923240010')->first(); // cari data berdasarkan npm
+        $mahasiswa = Mahasiswa::where('npm', '1923240050')->first(); // cari data berdasarkan npm
         $mahasiswa->delete(); // delete data npm tsb
         dump($mahasiswa); // show data
     }
