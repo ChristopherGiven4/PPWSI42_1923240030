@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaApiController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,13 @@ use App\Http\Controllers\MahasiswaApiController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("mahasiswa", MahasiswaApiController::class);
+Route::middleware("auth:sanctum")->group(function(){
+    Route::apiResource("mahasiswa", MahasiswaApiController::class);
+});
+
+//buat route login
+Route::post("/login", [AuthController::class, "login"]);
